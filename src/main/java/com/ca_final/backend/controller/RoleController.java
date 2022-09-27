@@ -11,7 +11,7 @@ public class RoleController {
 
     private RoleService roleService;
 
-    @PostMapping({"/createNewRole"})
+    @PostMapping("/roles/new")
     public Role createNewRole(@RequestBody Role role) {
         return roleService.createNewRole(role);
     }

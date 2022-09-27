@@ -1,0 +1,16 @@
+version: '3.9'
+services:
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: justas
+      POSTGRES_PASSWORD: justas1
+    ports:
+      - '5432:5432'
+  dbclient:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: a@mail.lt
+      PGADMIN_DEFAULT_PASSWORD: a
+    ports:
+      - '8001:80'

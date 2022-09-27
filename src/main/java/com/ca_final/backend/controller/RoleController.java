@@ -1,17 +1,17 @@
-package com.example.jwt.controller;
+package com.ca_final.backend.controller;
 
-import com.example.jwt.entity.Role;
-import com.example.jwt.services.RoleService;
-import lombok.AllArgsConstructor;
+import com.ca_final.backend.entity.Role;
+import com.ca_final.backend.services.RoleService;
+import lombok.Data;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@AllArgsConstructor
+@Data
 public class RoleController {
 
-    private final RoleService roleService;
+    private RoleService roleService;
 
     @PostMapping("/roles/new-role")
     public Role createNewRole(@RequestBody Role role) {

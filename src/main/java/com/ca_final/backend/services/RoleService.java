@@ -1,15 +1,17 @@
-package com.example.jwt.services;
+package com.ca_final.backend.services;
 
-import com.example.jwt.dao.RoleDao;
-import com.example.jwt.entity.Role;
-import lombok.AllArgsConstructor;
+import com.ca_final.backend.entity.Role;
+import com.ca_final.backend.dao.RoleDao;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.stereotype.Service;
 
 @Service
-@AllArgsConstructor
+@Getter
+@Setter
 public class RoleService {
 
-    private final RoleDao dao;
+    private RoleDao dao;
 
     public Role createNewRole(Role role) {
         return dao.save(role);

@@ -1,6 +1,6 @@
-package com.example.jwt.dao;
+package com.ca_final.backend.dao;
 
-import com.example.jwt.entity.Role;
+import com.ca_final.backend.entity.Role;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

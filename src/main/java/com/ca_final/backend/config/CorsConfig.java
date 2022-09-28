@@ -22,7 +22,8 @@ public class CorsConfig {
                         .allowedMethods(GET, POST, PUT, DELETE)
                         .allowedHeaders("*")
                         .allowedOriginPatterns("*")
-                        .allowCredentials(true);
+                        .allowCredentials(true)
+                        .allowedOrigins("http://localhost:4200");
             }
         };
     }

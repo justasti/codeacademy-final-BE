@@ -12,12 +12,14 @@ import java.util.Set;
 public class User {
 
     @Id
-    private String username;
+    @Column(unique = true)
+    private String personalCode;
+    private String email;
     private String firstName;
     private String lastName;
     private String password;
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(name = "USER_ROLE",
+    @JoinTable(name = "USER_ROLES",
             joinColumns = {
                     @JoinColumn(name = "USER_ID")
             },
@@ -25,5 +27,5 @@ public class User {
                     @JoinColumn(name = "ROLE_ID")
             }
     )
-    private Set<Role> role;
+    private Set<Role> roles;
 }

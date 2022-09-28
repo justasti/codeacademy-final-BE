@@ -23,7 +23,7 @@ public class UserService {
         Role role = roleDao.findById("User").get();
         Set<Role> userRoles = new HashSet<>();
         userRoles.add(role);
-        user.setRole(userRoles);
+        user.setRoles(userRoles);
         user.setPassword(getEncodedPassword(user.getPassword()));
 
         return userDao.save(user);

@@ -6,7 +6,6 @@ import com.ca_final.backend.entity.JwtResponse;
 import com.ca_final.backend.entity.User;
 import com.ca_final.backend.utils.JwtUtility;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
@@ -46,7 +45,7 @@ public class JwtService implements UserDetailsService {
 
         if (user != null) {
             return new org.springframework.security.core.userdetails.User(
-                    user.getUsername(),
+                    user.getPersonalCode(),
                     user.getPassword(),
                     getAuthority(user)
             );
@@ -57,7 +56,7 @@ public class JwtService implements UserDetailsService {
 
     private Set getAuthority(User user) {
         Set<SimpleGrantedAuthority> authorities = new HashSet<>();
-        user.getRole().forEach(role -> {
+        user.getRoles().forEach(role -> {
             authorities.add(new SimpleGrantedAuthority("ROLE_" + role.getName()));
         });
         return authorities;

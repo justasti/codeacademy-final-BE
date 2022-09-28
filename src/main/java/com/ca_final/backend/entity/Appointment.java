@@ -21,4 +21,5 @@ public class Appointment {
     private String patientPersonalCode;
     private Date appointmentDate;
     private String description;
+    private String status;
 }

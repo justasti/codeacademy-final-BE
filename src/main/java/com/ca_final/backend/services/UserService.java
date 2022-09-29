@@ -42,4 +42,10 @@ public class UserService {
     public Iterable<UserWithRole> getAllDoctors() { return userDao.getAllDoctors(); }
 
     public List<UserWithRole> getAllPatients() { return userDao.getAllPatients(); }
+
+    public User getCurrentUser(String username) { return userDao.findById(username).get(); }
+
+    public User getUserByPersonalCode(String personalCode) {
+        return userDao.getByPersonalCode(personalCode);
+    }
 }

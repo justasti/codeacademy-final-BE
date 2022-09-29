@@ -19,7 +19,7 @@ public class Appointment {
     private int id;
     private String doctorPersonalCode;
     private String patientPersonalCode;
-    private Date appointmentDate;
+    private String appointmentDate;
     private String description;
     private String status;
 }

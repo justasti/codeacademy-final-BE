@@ -4,6 +4,7 @@ import com.ca_final.backend.entity.User;
 import com.ca_final.backend.entity.UserWithRole;
 import com.ca_final.backend.services.UserService;
 import lombok.AllArgsConstructor;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,7 +12,7 @@ import java.util.List;
 @RestController
 @AllArgsConstructor
 @RequestMapping("/api/users")
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:4200")
 public class UserController {
 
     private UserService userService;
@@ -32,6 +33,19 @@ public class UserController {
 
     @GetMapping("/patients")
     public List<UserWithRole> getAllPatients() { return userService.getAllPatients(); }
+
+    @GetMapping("/current")
+    @ResponseBody
+    public User getCurrentUser(Authentication authentication) {
+        String name = authentication.getName();
+        return userService.getCurrentUser(name);
+    }
+
+    @GetMapping("/{personalCode}")
+    public User getUserByPersonalCode(@PathVariable String personalCode) {
+        return userService.getUserByPersonalCode(personalCode);
+    }
+
 //    @GetMapping("/forAdmin")
 //    @PreAuthorize("hasRole('Admin')")
 //    public String forAdmin(){

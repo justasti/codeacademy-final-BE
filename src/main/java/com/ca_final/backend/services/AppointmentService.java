@@ -17,4 +17,28 @@ public class AppointmentService {
     public Appointment addAppointment(Appointment appointment) {
         return appointmentDao.save(appointment);
     }
+
+    private Appointment getAppointmentById(int id) {
+        Appointment appointment = null;
+        for (Appointment appointment1 : appointmentDao.findAll()) {
+            if (appointment1.getId() == id) {
+                appointment = appointment1;
+            }
+        }
+        return appointment;
+    }
+
+    public void deleteAppointment(int id) {
+
+        Appointment appointment = getAppointmentById(id);
+
+        if (appointment != null) {
+            appointmentDao.delete(appointment);
+        }
+    }
+
+    public void updateAppointment(Appointment appointment) {
+
+        appointmentDao.save(appointment);
+    }
 }

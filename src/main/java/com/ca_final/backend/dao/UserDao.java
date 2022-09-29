@@ -11,9 +11,11 @@ import java.util.List;
 @Repository
 public interface UserDao extends CrudRepository<User, String> {
 
-    @Query(value = "SELECT first_name AS firstName, last_name AS lastName, role_id AS roleName FROM users u INNER JOIN user_roles ur ON u.personal_code = ur.personal_code WHERE ur.role_id='doctor'", nativeQuery = true)
+    @Query(value = "SELECT u.personal_code AS personalCode, first_name AS firstName, last_name AS lastName, role_id AS roleName FROM users u INNER JOIN user_roles ur ON u.personal_code = ur.personal_code WHERE ur.role_id='doctor'", nativeQuery = true)
     Iterable<UserWithRole> getAllDoctors();
 
-    @Query(value = "SELECT first_name AS firstName, last_name AS lastName, role_id AS roleName FROM users u INNER JOIN user_roles ur ON u.personal_code = ur.personal_code WHERE ur.role_id='user'", nativeQuery = true)
+    @Query(value = "SELECT u.personal_code AS personalCode, first_name AS firstName, last_name AS lastName, role_id AS roleName FROM users u INNER JOIN user_roles ur ON u.personal_code = ur.personal_code WHERE ur.role_id='user'", nativeQuery = true)
     List<UserWithRole> getAllPatients();
+
+    User getByPersonalCode(String personalCode);
 }

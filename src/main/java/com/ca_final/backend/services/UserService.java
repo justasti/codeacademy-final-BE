@@ -4,6 +4,7 @@ import com.ca_final.backend.dao.RoleDao;
 import com.ca_final.backend.dao.UserDao;
 import com.ca_final.backend.entity.Role;
 import com.ca_final.backend.entity.User;
+import com.ca_final.backend.entity.UserData;
 import com.ca_final.backend.entity.UserWithRole;
 import lombok.AllArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -28,6 +29,14 @@ public class UserService {
         user.setRoles(userRoles);
         user.setPassword(getEncodedPassword(user.getPassword()));
 
+        return userDao.save(user);
+    }
+
+    public User updateUserRoles(UserData userdata) {
+        User user = userDao.findById(userdata.getPersonalCode()).get();
+        Set<Role> userRoles = new HashSet<>();
+        userRoles.add(new Role(userdata.getRoleName()));
+        user.setRoles(userRoles);
         return userDao.save(user);
     }
 

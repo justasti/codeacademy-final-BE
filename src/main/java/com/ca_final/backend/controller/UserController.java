@@ -1,6 +1,7 @@
 package com.ca_final.backend.controller;
 
 import com.ca_final.backend.entity.User;
+import com.ca_final.backend.entity.UserData;
 import com.ca_final.backend.entity.UserWithRole;
 import com.ca_final.backend.services.UserService;
 import lombok.AllArgsConstructor;
@@ -46,15 +47,10 @@ public class UserController {
         return userService.getUserByPersonalCode(personalCode);
     }
 
-//    @GetMapping("/forAdmin")
-//    @PreAuthorize("hasRole('Admin')")
-//    public String forAdmin(){
-//        return "This URL is only accessible to the admin";
-//    }
-//
-//    @GetMapping("/forUser")
-//    @PreAuthorize("hasRole('Admin') || hasRole('User')")
-//    public String forUser(){
-//        return "This URL is only accessible to the user";
-//    }
+    @PutMapping("/updateRole")
+    public User updateUserRole(@RequestBody UserData userdata) {
+        return userService.updateUserRoles(userdata);
+    }
+
+
 }

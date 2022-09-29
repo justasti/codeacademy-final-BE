@@ -1,0 +1,1 @@
+insert into role values ('admin', 'admin role'), ('user', 'default role for new users'), ('doctor', 'role for doctors');
